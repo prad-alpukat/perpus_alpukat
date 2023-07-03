@@ -1,0 +1,72 @@
+<!-- halaman landing page -->
+<!-- halaman input tamu perpustakaan -->
+
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+<!-- content -->
+{% block content%}
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5 py-5">
+                <form action="/" method="POST">
+                    <div class="form-group">
+                        <label for="tamu_perpustakaan">Tamu Perpustakaan</label>
+                        <input type="text" name="nama" class="form-control" id="tamu_perpustakaan"
+                            placeholder="Tamu Perpustakaan">
+                        <small id="emailHelp" class="form-text text-muted">
+                            Input nama anda untuk mengunjungi perpustakaan
+                        </small>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block script %}
+<script>
+    const nama = "{{ nama }}";
+
+    if (nama != '') {
+        alert(`${nama}, Selamat datang di perpustakaan`);
+    }
+</script>
+{% endblock %}
+
+<!-- <section class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Judul</th>
+                <th scope="col">Sinopsis</th>
+                <th scope="col">Pengarang</th>
+                <th scope="col">Penerbit</th>
+                <th scope="col">Tahun Terbit</th>
+                <th scope="col">Lokasi</th>
+                <th scope="col">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for buku in bukus %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ buku[1] }}</td>
+                <td>{{ buku[3] }}</td>
+                <td>{{ buku[4] }}</td>
+                <td>{{ buku[5] }}</td>
+                <td>{{ buku[2] }}</td>
+                <td>{{ buku[6] }}</td>
+                <td>
+                    <a href="#" class="btn btn-warning">Edit</a>
+                    <a href="#" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section> -->

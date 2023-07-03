@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}List Peminjaman{% endblock %}
+
+{% block content%}
+
+<section>
+    <!-- list peminjaman -->
+    <div class="container py-5 ">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <h1>List Peminjaman</h1>
+                <a href="/dashboard/peminjaman/tambah" class="btn btn-primary">Tambah</a>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Buku</th>
+                            <th scope="col">NIK</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Tanggal Peminjaman</th>
+                            <th scope="col">Tanggal Pengembalian</th>
+                            <th scope="col">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for peminjaman in peminjamans %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <td>{{ peminjaman[1] }}</td>
+                            <td>{{ peminjaman[2] }} - {{ peminjaman[3] }}</td>
+                            <td>{{ peminjaman[4] }}</td>
+                            <td>{{ peminjaman[5] }}</td>
+                            <td>{{ peminjaman[6] }}</td>
+                            <td>
+                                <a href="/dashboard/peminjaman/edit/{{ peminjaman[0] }}"
+                                    class="btn btn-warning">Edit</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

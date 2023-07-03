@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Buku{% endblock %}
+
+{% block content%}
+
+<section>
+
+    <!-- halaman tambah buku -->
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h4>Edit Buku</h4>
+                    <form action="/dashboard/buku/edit/{{ buku[0] }}" method="POST">
+                        <!-- judul -->
+                        <div class="mb-3">
+                            <label for="judul" class="form-label">Judul</label>
+                            <input type="text" name="judul" class="form-control" id="judul" placeholder="judul"
+                                value="{{ buku[1] }}">
+                        </div>
+                        <!-- tahun -->
+                        <div class="mb-3">
+                            <label for="tahun_terbit" class="form-label">Tahun Terbit</label>
+                            <input type="number" name="tahun_terbit" class="form-control" id="tahun"
+                                placeholder="tahun terbit" value="{{ buku[2] }}">
+                        </div>
+                        <!-- sinopsis -->
+                        <div class="mb-3">
+                            <label for="sinopsis" class="form-label">Sinopsis</label>
+                            <textarea name="sinopsis" class="form-control" id="sinopsis" rows="3"
+                                placeholder="sinopsis">{{ buku[3] }}</textarea>
+                        </div>
+                        <!-- penerbit -->
+                        <div class="mb-3">
+                            <label for="penerbit" class="form-label">Penerbit</label>
+                            <input type="text" name="penerbit" class="form-control" id="penerbit" placeholder="penerbit"
+                                value="{{ buku[4] }}">
+                        </div>
+                        <!-- lokasi -->
+                        <div class="mb-3">
+                            <label for="lokasi" class="form-label">Lokasi</label>
+                            <input type="text" name="lokasi" class="form-control" id="lokasi" placeholder="lokasi"
+                                value="{{ buku[5] }}">
+                        </div>
+                        <!-- jumlah -->
+                        <div class="mb-3">
+                            <label for="jumlah" class="form-label">Jumlah Stok</label>
+                            <input type="number" name="jumlah" class="form-control" id="jumlah"
+                                placeholder="jumlah stok" value="{{ buku[6] }}">
+                        </div>
+                        <!-- jumlah terkini -->
+                        <div class="mb-3">
+                            <label for="jumlah_terkini" class="form-label">Jumlah Stok Terkini</label>
+                            <input type="number" name="jumlah_terkini" class="form-control" id="jumlah_terkini"
+                                placeholder="jumlah stok" value="{{ buku[6] }}">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Tambah</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+</section>
+
+{% endblock %}

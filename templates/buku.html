@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Buku{% endblock %}
+
+<!-- content -->
+{% block content%}
+<section>
+    <div class="container py-5">
+        <div class="row">
+            <!-- search -->
+            <div class="col-12 mb-3">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <form action="/buku" action="GET">
+                                <label for="search" class="form-label">Cari Buku:</label>
+                                <div class="d-flex">
+                                    <input type="text" name="search" class="form-control" id="search"
+                                        placeholder="nama buku">
+                                    <button class="btn btn-primary ms-2">Cari</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                {% if search %}
+                <h4>Hasil pencarian dengan judul buku "{{ search }}":</h4>
+                {% else %}
+                <h5>Semua Buku: </h5>
+                {% endif %}
+                <div class="row">
+                    {% for buku in bukus %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ buku[1] }}</h5>
+                                <p class="card-text text-truncate">{{ buku[3] }}</p>
+                                <a href="/buku/{{ buku[0] }}" class="btn btn-primary">Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

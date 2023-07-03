@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Peminjaman{% endblock %}
+
+{% block content%}
+
+<section>
+    <!-- input peminjaman -->
+    <div class="container py-5 ">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1>Form Peminjaman</h1>
+                <form action="/dashboard/peminjaman" method="POST">
+                    <!-- list buku -->
+                    <div class="mb-3">
+                        <label for="list-buku" class="form-label">List Buku</label>
+                        <select class="form-select" id="list-buku" name="id_buku" required>
+                            <option selected>Pilih Buku</option>
+                            {% for buku in bukus %}
+                            <option value="{{ buku[0] }}">{{ buku[1] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <!-- list nik -->
+                    <div class="mb-3">
+                        <label for="list-nik" class="form-label">List NIK</label>
+                        <select class="form-select" id="list-nik" name="nik" required>
+                            <option selected>Pilih NIK</option>
+                            {% for anggota in anggotas %}
+                            <option value="{{ anggota[0] }}">{{ anggota[0] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" onclick="return confirm('yakin nik sudak cocok?')"
+                        class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

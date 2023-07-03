@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Tambah Anggota{% endblock %}
+
+{% block content%}
+
+<section>
+
+    <!-- halaman tambah buku -->
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h4>Tambah Anggota</h4>
+                    <form action="/dashboard/anggota/tambah" method="POST">
+                        <!-- nik -->
+                        <div class="mb-3">
+                            <label for="nik" class="form-label">nik</label>
+                            <input type="number" name="nik" class="form-control" id="nik" placeholder="nik">
+                        </div>
+                        <!-- nama -->
+                        <div class="mb-3">
+                            <label for="nama" class="form-label">nama</label>
+                            <input type="text" name="nama" class="form-control" id="nama" placeholder="nama">
+                        </div>
+
+                        <button type="submit" onclick="return confirm('Apakah anda yakin??')"
+                            class="btn btn-primary">Tambah</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

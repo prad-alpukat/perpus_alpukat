@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Login Admin{% endblock %}
+
+{% block content%}
+
+<section>
+    <div class="container py-5">
+        <h1 class="fw-bold">Dashboard</h1>
+        <div class="row">
+            <!-- search -->
+            <div class="col-12 mb-3">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <form action="/dashboard" method="GET">
+                                <label for="search" class="form-label">Cari Buku:</label>
+                                <div class="d-flex">
+                                    <input type="text" name="search" class="form-control" id="search"
+                                        placeholder="nama buku">
+                                    <button class="btn btn-primary ms-2">Cari</button>
+                                </div>
+                            </form>
+                            <a href="/dashboard/tambah-buku" class="btn btn-primary mt-3">Tambah Buku</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- table -->
+            <div class="col-12">
+                {% if search %}
+                Hasil pencarian buku "{{ search }}"
+                {% endif %}
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Judul</th>
+                            <th scope="col">Tahun Terbit</th>
+                            <th scope="col">Penerbit</th>
+                            <th scope="col">Lokasi</th>
+                            <th scope="col">Total Stok</th>
+                            <th scope="col">Stok Terkini</th>
+                            <th scope="col">Opsi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for buku in bukus %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <!-- judul -->
+                            <td>{{ buku[1] }}</td>
+                            <!-- tahun terbit -->
+                            <td>{{ buku[2] }}</td>
+                            <!-- penerbit -->
+                            <td>{{ buku[4] }}</td>
+                            <!-- lokasi -->
+                            <td>{{ buku[5] }}</td>
+                            <!-- total stok -->
+                            <td>{{ buku[6] }}</td>
+                            <!-- stok terkini -->
+                            <td>{{ buku[7] }}</td>
+                            <!-- opsi -->
+                            <td>
+                                <a href="/dashboard/buku/edit/{{ buku[0] }}" class="btn btn-sm btn-success">Edit</a>
+                                <a onclick="return confirm('Yakin???')" href="/dashboard/buku/hapus/{{ buku[0] }}"
+                                    class="btn btn-sm btn-danger">Hapus</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

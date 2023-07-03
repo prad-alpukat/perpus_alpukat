@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Anggota{% endblock %}
+
+{% block content%}
+
+<section>
+
+    <!-- halaman tambah buku -->
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h4>Edit Anggota</h4>
+                    <form action="/dashboard/anggota/edit/{{ anggota[0] }}" method="POST">
+                        <!-- nik -->
+                        <div class="mb-3">
+                            <label for="nik" class="form-label">nik</label>
+                            <input type="number" name="nik" class="form-control" id="nik" placeholder="nik"
+                                value="{{ anggota[0] }}">
+                        </div>
+                        <!-- nama -->
+                        <div class="mb-3">
+                            <label for="nama" class="form-label">nama</label>
+                            <input type="text" name="nama" class="form-control" id="nama" placeholder="nama"
+                                value="{{ anggota[1] }}">
+                        </div>
+
+                        <button type="submit" onclick="return confirm('Apakah anda yakin??')"
+                            class="btn btn-primary">Tambah</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

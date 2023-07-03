@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Tambah Buku{% endblock %}
+
+{% block content%}
+
+<section>
+
+    <!-- halaman tambah buku -->
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h4>Tambah Buku</h4>
+                    <form action="/dashboard/tambah-buku" method="POST">
+                        <!-- judul -->
+                        <div class="mb-3">
+                            <label for="judul" class="form-label">Judul</label>
+                            <input type="text" name="judul" class="form-control" id="judul" placeholder="judul">
+                        </div>
+                        <!-- tahun -->
+                        <div class="mb-3">
+                            <label for="tahun_terbit" class="form-label">Tahun Terbit</label>
+                            <input type="number" name="tahun_terbit" class="form-control" id="tahun"
+                                placeholder="tahun terbit">
+                        </div>
+                        <!-- sinopsis -->
+                        <div class="mb-3">
+                            <label for="sinopsis" class="form-label">Sinopsis</label>
+                            <textarea name="sinopsis" class="form-control" id="sinopsis" rows="3"
+                                placeholder="sinopsis"></textarea>
+                        </div>
+                        <!-- penerbit -->
+                        <div class="mb-3">
+                            <label for="penerbit" class="form-label">Penerbit</label>
+                            <input type="text" name="penerbit" class="form-control" id="penerbit"
+                                placeholder="penerbit">
+                        </div>
+                        <!-- lokasi -->
+                        <div class="mb-3">
+                            <label for="lokasi" class="form-label">Lokasi</label>
+                            <input type="text" name="lokasi" class="form-control" id="lokasi" placeholder="lokasi">
+                        </div>
+                        <!-- jumlah -->
+                        <div class="mb-3">
+                            <label for="jumlah" class="form-label">Jumlah Stok</label>
+                            <input type="number" name="jumlah" class="form-control" id="jumlah"
+                                placeholder="jumlah stok">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Tambah</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+</section>
+
+{% endblock %}

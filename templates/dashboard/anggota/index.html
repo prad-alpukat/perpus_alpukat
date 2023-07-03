@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}List Anggota{% endblock %}
+{% block content%}
+<section>
+    <!-- list anggota -->
+    <div class="container py-5 ">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <h1>List Anggota</h1>
+                <a href="/dashboard/anggota/tambah" class="btn btn-primary">Tambah</a>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">NIK</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for anggota in anggotas %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <td>{{ anggota[0] }}</td>
+                            <td>{{ anggota[1] }}</td>
+                            <td> <a href="/dashboard/anggota/edit/{{ anggota[0] }}" class="btn btn-warning">Edit</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</section>
+{% endblock %}
