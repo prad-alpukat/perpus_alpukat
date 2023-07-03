@@ -2,7 +2,7 @@
 sistem perpustakaan offline menggunakan flask
 ---
 
-# instalasi 
+# instalation
 1. git clone this repo
 2. create database called "perpus_alpukat"
 3. import database.sql to perpus_alpukat
