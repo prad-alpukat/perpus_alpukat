@@ -13,6 +13,18 @@ app.config['MYSQL_DB'] = 'perpus_alpukat'
 
 mysql = MySQL(app)
 
+
+
+def input_tamu(nama):
+    try: 
+        cursor = mysql.connection.cursor()
+        cursor.execute("INSERT INTO tamu (nama) VALUES (%s)", (nama,))
+        mysql.connection.commit()
+        cursor.close()
+        return True
+    except: 
+        return False
+
 # landing page / home
 @app.route("/", methods=['GET','POST'])
 def home():
@@ -23,9 +35,10 @@ def home():
     error = None
     if request.method == 'POST':
         nama = request.form['nama']
-        response = input_tamu(nama)
-        if (response == False):
-            error = 'Terjadi kesalahan saat input data'
+        cursor = mysql.connection.cursor()
+        cursor.execute("INSERT INTO tamu (nama) VALUES (%s)", (nama,))
+        mysql.connection.commit()
+        cursor.close()
         return render_template('index.html', error=error, nama=nama)
     
     return render_template('index.html', error=error)
@@ -138,7 +151,7 @@ def edit_buku(id):
             jumlah = request.form['jumlah']
             jumlah_terkini = request.form['jumlah_terkini']
 
-            # insert data
+            # update data
             cursor = mysql.connection.cursor()
             cursor.execute("UPDATE buku SET judul=%s, tahun_terbit=%s, sinopsis=%s, penerbit=%s, lokasi=%s, total_stok=%s, stok_terkini=%s WHERE id=%s", (judul, tahun_terbit, sinopsis, penerbit, lokasi, jumlah,jumlah_terkini,id,))
             mysql.connection.commit()
@@ -196,10 +209,8 @@ def peminjaman_tambah():
             cursor = mysql.connection.cursor()
             cursor.execute("INSERT INTO peminjaman (tgl, tgl_jatuh_tempo, nik_anggota, id_buku ) VALUES (%s, %s, %s, %s)", (tgl, tgl_jatuh_tempo, nik, id_buku,))
             mysql.connection.commit()
-            cursor.close()
 
             # update stok buku
-            cursor = mysql.connection.cursor()
             cursor.execute("UPDATE buku SET stok_terkini=stok_terkini-1 WHERE id=%s", (id_buku,))
             mysql.connection.commit()
             cursor.close()
@@ -333,13 +344,3 @@ def logout():
 @app.route('/hello/<name>')
 def hello(name=None):
     return render_template('index.html', name=name)
-
-def input_tamu(nama):
-    try: 
-        cursor = mysql.connection.cursor()
-        cursor.execute("INSERT ITO tamu (nama) VALUES (%s)", (nama,))
-        mysql.connection.commit()
-        cursor.close()
-        return True
-    except: 
-        return False
